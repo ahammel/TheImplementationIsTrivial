@@ -1,0 +1,228 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-xa">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+        <title>The implementation is trivial!</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //<![CDATA[
+
+            /*
+             * Hosted on GitHub.
+             * Project page: https://github.com/ahammel/TheImplementationIsTrivial
+             */
+
+            var intros = [
+                "Just write a",
+                "Just use a",
+            ];
+
+            var adjectives = [
+                "relational",
+                "functional",
+                "algebraic",
+                "strongly-consistent",
+                "weakly-consistent",
+                "semi-weakly-consistent",
+                "semi-strongly-consistent",
+                "object-oriented",
+                "aspect-oriented",
+                "mock",
+                "imperative",
+                "declarative",
+                "generated",
+                "SQL",
+                "NoSQL",
+                "cloud",
+                "distributed",
+                "serverless",
+                "high-performance",
+                "elastic",
+                "Java",
+                "Javascript",
+                "CoffeeScript",
+                "Elixir",
+                "Erlang",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Haskell",
+                "Rust",
+                "Clojure",
+                "LISP",
+                "monitoring",
+                "Linux",
+                "AWS",
+                "Azure",
+                "CSS",
+                "HTML",
+                "Kubernetes",
+                "Enterprise",
+                "scalable",
+                "web-scale",
+                "agile",
+                "scrum",
+                "kanban",
+                "automated",
+                "fuzzy",
+                "Von Neumann",
+                "Turing",
+                "Turing-complete",
+                "e-commerce",
+                "encrypted",
+                "authenticated",
+                "secure",
+                "lossless",
+                "lossy",
+                "multi-factor",
+                "single sign-on",
+                "multicast",
+                "peer-to-peer",
+                "machine-learning",
+                "self-optimizing",
+                "compiled",
+                "interpreted",
+            ];
+
+            var things = [
+                "algebra",
+                "database",
+                "monad",
+                "monoid",
+                "semigroup",
+                "language",
+                "regular language",
+                "DSL",
+                "load balancer",
+                "auto scaling group",
+                "data definition language",
+                "NAT gateway",
+                "finite state machine",
+                "push-down automaton",
+                "Docker container",
+                "framework",
+                "runtime",
+                "service",
+                "worker",
+                "service worker",
+                "API",
+                "web-head",
+                "progressive web app",
+                "iframe",
+                "shadow DOM",
+                "design system",
+                "blockchain",
+                "automaton",
+                "data structure",
+                "CRDT",
+                "markup language",
+                "rules engine",
+                "logic engine",
+                "engine",
+                "API",
+                "AI",
+                "neural net",
+            ];
+
+            var solutions = [
+                "transform",
+                "transfer",
+                "migrate",
+                "move",
+            ];
+
+            var problems  = [
+                "problems",
+                "load",
+                "data",
+                "scale",
+                "state",
+                "complexity",
+                "work",
+                "venture capital",
+                "metrics",
+                "logs",
+                "money",
+            ];
+
+            var places = [
+                "the front end",
+                "the back end",
+                "the server",
+                "the client",
+                "the middleware",
+                "the software",
+                "the hardware",
+
+                "the data layer",
+                "the network layer",
+                "the application layer",
+                "the domain model",
+                "the cloud",
+                "the internet",
+                "the dark web",
+                "the semantic web",
+
+                "the dev team",
+                "the ops team",
+                "management",
+                "client services",
+                "customer support",
+                "customer success",
+                "the special projects team",
+                "contractors",
+                "the open source community",
+                "users",
+                "the customers",
+                "the clients",
+
+                "GitHub",
+                "Mechanical Turk",
+                "the roadmap",
+                "web workers",
+
+                "the CPU",
+                "the disk",
+                "memory",
+                "S3",
+            ];
+
+            function randomNFromList(arr, n) {
+                var result = new Array(n),
+                    len = arr.length,
+                    taken = new Array(len);
+                if (n > len)
+                    throw new RangeError("randomNFromList: more elements taken than available");
+                while (n--) {
+                    var x = Math.floor(Math.random() * len);
+                    result[n] = arr[x in taken ? taken[x] : x];
+                    taken[x] = --len in taken ? taken[len] : len;
+                }
+                return result;
+            }
+
+            function randomFromList(list) {
+                return randomNFromList(list, 1)[0];
+            }
+
+            function writeLine(fontSize, text) {
+                document.write('<p style="font-size:' + fontSize + "px" +
+                    '; text-align: center; margin:0; padding:0; border:0">' + text +
+                    '</p>');
+            }
+
+            var firstAdjective = randomFromList(adjectives);
+            var introSuffix = "aeiouAEIOU".indexOf(firstAdjective[0]) === -1 ? "" : "n";
+            var thePlaces = randomNFromList(places, 2);
+
+
+            writeLine(40, "The implementation is trivial! " + randomFromList(intros) + introSuffix);
+            writeLine(70, firstAdjective + " " + randomFromList(things));
+            writeLine(40, "to " + randomFromList(solutions) + " the " + randomFromList(problems) + " from");
+            writeLine(70, thePlaces[0]);
+            writeLine(40, "to");
+            writeLine(70, thePlaces[1]);
+            //]]>
+        </script>
+    </body>
+</html>
