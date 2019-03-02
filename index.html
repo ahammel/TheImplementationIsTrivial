@@ -12,12 +12,12 @@
              * Project page: https://github.com/ahammel/TheImplementationIsTrivial
              */
 
-            var intros = [
+            const intros = [
                 {writeIt: true, message: "Just write a"},
                 {writeIt: false, message: "Just use a"},
             ];
 
-            var adjectives = [
+            const adjectives = [
                 "AWS",
                 "Azure",
                 "Enterprise",
@@ -77,7 +77,7 @@
                 "web-scale",
             ];
 
-            var things = [
+            const things = [
                 "AI",
                 "API",
                 "API",
@@ -129,7 +129,7 @@
                 "worker",
             ];
 
-            var languages = [
+            const languages = [
                 "APL",
                 "ASP.NET",
                 "Assembly",
@@ -171,13 +171,13 @@
                 "Visual Basic",
             ];
 
-            var ProblemType = {
+            const ProblemType = {
                 humanProblem: "humanProblem",
                 robotProblem: "robotProblem",
 
             };
 
-            var problems  = [
+            const problems  = [
                 {type: ProblemType.humanProblem, name: "blame"},
                 {type: ProblemType.humanProblem, name: "complexity"},
                 {type: ProblemType.humanProblem, name: "money"},
@@ -198,7 +198,7 @@
                 {type: ProblemType.robotProblem, name: "work"},
             ];
 
-            var solutions = [
+            const solutions = [
                 "migrates",
                 "moves",
                 "transfers",
@@ -206,7 +206,7 @@
             ];
 
 
-            var robots = [
+            const robots = [
                 "CassandraDB",
                 "EC2",
                 "Elasticsearch",
@@ -238,7 +238,7 @@
                 "the server",
             ];
 
-            var huamans = [
+            const huamans = [
                 "contractors",
                 "customer support",
                 "management",
@@ -252,13 +252,13 @@
             ];
 
             function randomNFromList(arr, n) {
-                var result = new Array(n),
-                    len = arr.length,
-                    taken = new Array(len);
+                const result = new Array(n);
+                let len = arr.length;
+                let taken = new Array(len);
                 if (n > len)
                     throw new RangeError("randomNFromList: more elements taken than available");
                 while (n--) {
-                    var x = Math.floor(Math.random() * len);
+                    const x = Math.floor(Math.random() * len);
                     result[n] = arr[x in taken ? taken[x] : x];
                     taken[x] = --len in taken ? taken[len] : len;
                 }
@@ -275,16 +275,16 @@
                     '</p>');
             }
 
-            var adjective = randomFromList(adjectives);
-            var intro = randomFromList(intros);
-            var introSuffix = "aeiouAEIOU".indexOf(adjective[0]) === -1 ? "" : "n";
-            var languageSuffix = intro.writeIt
+            const adjective = randomFromList(adjectives);
+            const intro = randomFromList(intros);
+            const introSuffix = "aeiouAEIOU".indexOf(adjective[0]) === -1 ? "" : "n";
+            const languageSuffix = intro.writeIt
                 ? " in " + randomFromList(languages)
                 : "";
 
-            var problem = randomFromList(problems);
+            const problem = randomFromList(problems);
 
-            var thePlaces = (function() {
+            const thePlaces = (function() {
                 switch (problem.type) {
                     case ProblemType.robotProblem:
                         return randomNFromList(robots, 2);
