@@ -171,46 +171,54 @@
                 "Visual Basic",
             ];
 
+            var ProblemType = {
+                humanProblem: "humanProblem",
+                robotProblem: "robotProblem",
+
+            };
+
+            var problems  = [
+                {type: ProblemType.humanProblem, name: "blame"},
+                {type: ProblemType.humanProblem, name: "complexity"},
+                {type: ProblemType.humanProblem, name: "money"},
+                {type: ProblemType.humanProblem, name: "the problems"},
+                {type: ProblemType.humanProblem, name: "responsibility"},
+                {type: ProblemType.humanProblem, name: "venture capital"},
+
+                {type: ProblemType.robotProblem, name: "data"},
+                {type: ProblemType.robotProblem, name: "load"},
+                {type: ProblemType.robotProblem, name: "metrics"},
+                {type: ProblemType.robotProblem, name: "resource contention"},
+                {type: ProblemType.robotProblem, name: "the logs"},
+                {type: ProblemType.robotProblem, name: "the performance problems"},
+                {type: ProblemType.robotProblem, name: "the problems"}, // human-bot solidarity!
+                {type: ProblemType.robotProblem, name: "the scale"},
+                {type: ProblemType.robotProblem, name: "the state"},
+                {type: ProblemType.robotProblem, name: "the traffic"},
+                {type: ProblemType.robotProblem, name: "work"},
+            ];
+
             var solutions = [
                 "migrates",
                 "moves",
                 "transfers",
-                "transforms",
-                "translates",
+                "shifts",
             ];
 
-            var problems  = [
-                "complexity",
-                "data",
-                "load",
-                "metrics",
-                "money",
-                "resource contention",
-                "the logs",
-                "the performance problems",
-                "the problems",
-                "the scale",
-                "the state",
-                "traffic",
-                "venture capital",
-                "work",
-            ];
 
-            var places = [
+            var robots = [
                 "CassandraDB",
+                "EC2",
                 "Elasticsearch",
                 "GitHub",
                 "Hadoop",
                 "Kafka",
-                "Mechanical Turk",
+                "Mechanical Turk", // OK, not really robots...
                 "MongoDB",
                 "MySQL",
                 "PostgreSQL",
                 "S3",
                 "a web worker",
-                "contractors",
-                "customer support",
-                "management",
                 "memory",
                 "the CPU",
                 "the UI",
@@ -218,21 +226,28 @@
                 "the back end",
                 "the client",
                 "the cloud",
-                "the customers",
-                "the dark web",
                 "the data layer",
                 "the data model",
                 "the database",
-                "the dev team",
                 "the disk",
                 "the domain model",
                 "the front end",
                 "the internet",
                 "the network layer",
-                "the open source community",
-                "the ops team",
                 "the semantic web",
                 "the server",
+            ];
+
+            var huamans = [
+                "contractors",
+                "customer support",
+                "management",
+                "marketing",
+                "the customers",
+                "the dark web",
+                "the dev team",
+                "the open source community",
+                "the ops team",
                 "users",
             ];
 
@@ -267,12 +282,21 @@
                 ? " in " + randomFromList(languages)
                 : "";
 
-            var thePlaces = randomNFromList(places, 2);
+            var problem = randomFromList(problems);
+
+            var thePlaces = (function() {
+                switch (problem.type) {
+                    case ProblemType.robotProblem:
+                        return randomNFromList(robots, 2);
+                    case ProblemType.humanProblem:
+                        return randomNFromList(huamans, 2);
+                }
+            })();
 
 
             writeLine(40, "The implementation is trivial! " + intro.message + introSuffix);
             writeLine(70, adjective + " " + randomFromList(things) + languageSuffix);
-            writeLine(40, "that " + randomFromList(solutions) + " " + randomFromList(problems) + " from");
+            writeLine(40, "that " + randomFromList(solutions) + " " + problem.name + " from");
             writeLine(70, thePlaces[0]);
             writeLine(40, "to");
             writeLine(70, thePlaces[1]);
