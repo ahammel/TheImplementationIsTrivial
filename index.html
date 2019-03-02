@@ -13,18 +13,18 @@
              */
 
             var intros = [
-                "Just write a",
-                "Just use a",
+                {writeIt: true, message: "Just write a"},
+                {writeIt: false, message: "Just use a"},
             ];
 
             var adjectives = [
                 "relational",
                 "functional",
                 "algebraic",
-                "strongly-consistent",
-                "weakly-consistent",
-                "semi-weakly-consistent",
-                "semi-strongly-consistent",
+                "strongly consistent",
+                "weakly consistent",
+                "semi-weakly consistent",
+                "semi-strongly consistent",
                 "object-oriented",
                 "aspect-oriented",
                 "mock",
@@ -38,30 +38,16 @@
                 "serverless",
                 "high-performance",
                 "elastic",
-                "Java",
-                "Javascript",
-                "CoffeeScript",
-                "Elixir",
-                "Erlang",
-                "PHP",
-                "Python",
-                "Ruby",
-                "Haskell",
-                "Rust",
-                "Clojure",
-                "LISP",
                 "monitoring",
                 "Linux",
                 "AWS",
                 "Azure",
-                "CSS",
-                "HTML",
                 "Kubernetes",
                 "Enterprise",
                 "scalable",
                 "web-scale",
                 "agile",
-                "scrum",
+                "Scrum",
                 "kanban",
                 "automated",
                 "fuzzy",
@@ -82,10 +68,18 @@
                 "self-optimizing",
                 "compiled",
                 "interpreted",
+                "low latency",
+                "high throughput",
+                "petabyte-scale",
+                "null",
+                "empty",
+                "formally verified",
+                "open source",
             ];
 
             var things = [
                 "algebra",
+                "object algebra",
                 "database",
                 "monad",
                 "monoid",
@@ -101,14 +95,14 @@
                 "push-down automaton",
                 "Docker container",
                 "framework",
+                "actor framework",
                 "runtime",
                 "service",
                 "worker",
                 "service worker",
                 "API",
-                "web-head",
                 "progressive web app",
-                "iframe",
+                "single page app",
                 "shadow DOM",
                 "design system",
                 "blockchain",
@@ -122,27 +116,82 @@
                 "API",
                 "AI",
                 "neural net",
+                "formal verification system",
+                "theorem prover",
+                "oracle",
+                "queue",
+                "compiler",
+                "regular expression",
+                "Lambda",
+                "middleware",
+                "cache",
+                "scheduler",
+            ];
+
+            var languages = [
+                "Java",
+                "JavaScript",
+                "CoffeeScript",
+                "Elixir",
+                "Erlang",
+                "PHP",
+                "CSS",
+                "HTML",
+                "Python",
+                "Ruby",
+                "Rails",
+                "Haskell",
+                "Rust",
+                "Clojure",
+                "ClojureScript",
+                "LISP",
+                "C",
+                "C++",
+                "C♯",
+                "D",
+                "F♯",
+                "Swift",
+                "Objective-C",
+                "TypeScript",
+                "Node.js",
+                "Scala",
+                "Kotlin",
+                "Visual Basic",
+                "ASP.NET",
+                "Perl",
+                "Lua",
+                "Idris",
+                "Coq",
+                "OCaml",
+                "Elm",
+                "APL",
+                "Forth",
+                "Assembly"
             ];
 
             var solutions = [
-                "transform",
-                "transfer",
-                "migrate",
-                "move",
+                "transforms",
+                "transfers",
+                "migrates",
+                "moves",
+                "translates",
             ];
 
             var problems  = [
-                "problems",
+                "the problems",
+                "the performance problems",
                 "load",
                 "data",
-                "scale",
-                "state",
+                "the scale",
+                "the state",
                 "complexity",
                 "work",
                 "venture capital",
                 "metrics",
-                "logs",
+                "the logs",
                 "money",
+                "traffic",
+                "resource contention",
             ];
 
             var places = [
@@ -150,11 +199,8 @@
                 "the back end",
                 "the server",
                 "the client",
-                "the middleware",
-                "the software",
-                "the hardware",
-
                 "the data layer",
+                "the database",
                 "the network layer",
                 "the application layer",
                 "the domain model",
@@ -162,29 +208,31 @@
                 "the internet",
                 "the dark web",
                 "the semantic web",
-
+                "the UI",
                 "the dev team",
                 "the ops team",
                 "management",
-                "client services",
                 "customer support",
-                "customer success",
-                "the special projects team",
                 "contractors",
                 "the open source community",
                 "users",
                 "the customers",
-                "the clients",
-
                 "GitHub",
                 "Mechanical Turk",
-                "the roadmap",
-                "web workers",
-
+                "a web worker",
                 "the CPU",
                 "the disk",
                 "memory",
+                "Hadoop",
+                "the data model",
+
                 "S3",
+                "PostgreSQL",
+                "MySQL",
+                "CassandraDB",
+                "Kafka",
+                "Elasticsearch",
+                "MongoDB",
             ];
 
             function randomNFromList(arr, n) {
@@ -211,14 +259,19 @@
                     '</p>');
             }
 
-            var firstAdjective = randomFromList(adjectives);
-            var introSuffix = "aeiouAEIOU".indexOf(firstAdjective[0]) === -1 ? "" : "n";
+            var adjective = randomFromList(adjectives);
+            var intro = randomFromList(intros);
+            var introSuffix = "aeiouAEIOU".indexOf(adjective[0]) === -1 ? "" : "n";
+            var languageSuffix = intro.writeIt
+                ? " in " + randomFromList(languages)
+                : "";
+
             var thePlaces = randomNFromList(places, 2);
 
 
-            writeLine(40, "The implementation is trivial! " + randomFromList(intros) + introSuffix);
-            writeLine(70, firstAdjective + " " + randomFromList(things));
-            writeLine(40, "to " + randomFromList(solutions) + " the " + randomFromList(problems) + " from");
+            writeLine(40, "The implementation is trivial! " + intro.message + introSuffix);
+            writeLine(70, adjective + " " + randomFromList(things) + languageSuffix);
+            writeLine(40, "that " + randomFromList(solutions) + " " + randomFromList(problems) + " from");
             writeLine(70, thePlaces[0]);
             writeLine(40, "to");
             writeLine(70, thePlaces[1]);
