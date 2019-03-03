@@ -22,6 +22,7 @@
                 "Azure",
                 "Enterprise",
                 "Kubernetes",
+                "Lamport",
                 "Linux",
                 "NoSQL",
                 "SQL",
@@ -47,7 +48,7 @@
                 "fuzzy",
                 "generated",
                 "high throughput",
-                "high-performance",
+                "high performance",
                 "imperative",
                 "interpreted",
                 "kanban",
@@ -181,8 +182,9 @@
                 {type: ProblemType.humanProblem, name: "blame"},
                 {type: ProblemType.humanProblem, name: "complexity"},
                 {type: ProblemType.humanProblem, name: "money"},
-                {type: ProblemType.humanProblem, name: "the problems"},
                 {type: ProblemType.humanProblem, name: "responsibility"},
+                {type: ProblemType.humanProblem, name: "the hard problems"},
+                {type: ProblemType.humanProblem, name: "the problem"},
                 {type: ProblemType.humanProblem, name: "venture capital"},
 
                 {type: ProblemType.robotProblem, name: "data"},
@@ -191,7 +193,7 @@
                 {type: ProblemType.robotProblem, name: "resource contention"},
                 {type: ProblemType.robotProblem, name: "the logs"},
                 {type: ProblemType.robotProblem, name: "the performance problems"},
-                {type: ProblemType.robotProblem, name: "the problems"}, // human-bot solidarity!
+                {type: ProblemType.robotProblem, name: "the problem"}, // human-bot solidarity!
                 {type: ProblemType.robotProblem, name: "the scale"},
                 {type: ProblemType.robotProblem, name: "the state"},
                 {type: ProblemType.robotProblem, name: "the traffic"},
@@ -201,10 +203,10 @@
             const solutions = [
                 "migrates",
                 "moves",
-                "transfers",
+                "pushes",
                 "shifts",
+                "transfers",
             ];
-
 
             const robots = [
                 "CassandraDB",
@@ -227,6 +229,7 @@
                 "the client",
                 "the cloud",
                 "the data layer",
+                "the data link layer",
                 "the data model",
                 "the database",
                 "the disk",
@@ -234,8 +237,12 @@
                 "the front end",
                 "the internet",
                 "the network layer",
+                "the physical layer",
+                "the presentation layer",
                 "the semantic web",
                 "the server",
+                "the session layer",
+                "the transport layer",
             ];
 
             const huamans = [
@@ -292,7 +299,6 @@
                         return randomNFromList(huamans, 2);
                 }
             })();
-
 
             writeLine(40, "The implementation is trivial! " + intro.message + introSuffix);
             writeLine(70, adjective + " " + randomFromList(things) + languageSuffix);
